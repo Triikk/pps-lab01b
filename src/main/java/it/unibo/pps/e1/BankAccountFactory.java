@@ -3,14 +3,14 @@ package it.unibo.pps.e1;
 public class BankAccountFactory {
 
     public BankAccount createBronzeBankAccount(){
-        return new BronzeBankAccount(new CoreBankAccount(), (amount) -> amount < 100 ? 0 : 1);
+        return new ComplexBankAccount(new CoreBankAccount(), (amount) -> amount < 100 ? 0 : 1, (balance, amount) -> balance >= amount);
     }
 
     public BankAccount createSilverBankAccount(){
-        return new SilverBankAccount(new CoreBankAccount(), (amount) -> 1);
+        return new ComplexBankAccount(new CoreBankAccount(), (amount) -> 1, (balance, amount) -> balance >= amount);
     }
 
     public BankAccount createGoldBankAccount(){
-        return new GoldBankAccount(new CoreBankAccount(), (amount) -> 0);
+        return new ComplexBankAccount(new CoreBankAccount(), (amount) -> 0,  (balance, amount) -> balance - amount >= -500);
     }
 }
