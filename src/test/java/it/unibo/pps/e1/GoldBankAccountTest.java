@@ -7,7 +7,7 @@ public class GoldBankAccountTest extends CoreBankAccountTest {
 
     @BeforeEach
     void init(){
-        this.account = new GoldBankAccount(new CoreBankAccount(), new GoldFee());
+        this.account = new BankAccountFactory().createGoldBankAccount();
     }
 
     @Test
